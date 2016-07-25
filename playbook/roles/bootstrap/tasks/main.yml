@@ -1,0 +1,22 @@
+
+- name: main | update APT package cache
+  apt: update_cache=yes cache_valid_time=3600
+
+- apt: upgrade=safe update_cache=yes # make sure system is up-to-date
+
+- name: main | install base packages # some security packages are handled in 3rd party roles
+  apt: name={{item}} state=present
+  with_items:
+    - python-pip
+    - python-wheel
+    - python-setuptools
+    - vim
+    - htop
+    - syslog-ng
+    - nginx
+
+- include: security.yml
+
+
+
+

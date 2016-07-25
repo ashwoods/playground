@@ -1,0 +1,28 @@
+- name: security | install security packages # some security packages are handled in 3rd party roles
+  apt: name={{item}} state=present
+  with_items:
+    - tiger
+    - logwatch
+    - rkhunter
+    - chkrootkit
+    - denyhosts
+    - apt-transport-https
+    - ca-certificates
+    - ufw
+    - openssl
+
+- name: security | setup ufw
+  ufw: state=enabled policy=reject
+
+- name: security | allow ssh traffic
+  ufw: rule=allow port=22 proto=tcp
+
+- name: security | allow https traffic
+  ufw: rule=allow port=443 proto=tcp
+
+- name: security | allow http traffic
+  ufw: rule=allow port=80 proto=tcp
+
+- name: security | create dhparam
+  command: openssl dhparam -out /etc/ssl/certs/dhparam.pem 2048 creates=/etc/ssl/certs/dhparam.pem
+
