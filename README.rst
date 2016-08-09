@@ -1,5 +1,5 @@
-Playground - set of scripts for trying out different architectures
-==================================================================
+Playground - set of scripts for trying out different architectures and tools
+============================================================================
 
 
 

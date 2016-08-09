@@ -1,0 +1,9 @@
+
+- name: Main | install python requirements
+  pip: name={{item.name}} version={{item.version}} state=present
+  with_items:
+    - { name: 'pip', version: 8.1.2 }
+    - { name: 'docker-compose', version: 1.7.1 }
+
+
+- include: elk.yml

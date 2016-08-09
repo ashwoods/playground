@@ -10,10 +10,13 @@
     - python-pip
     - python-wheel
     - python-setuptools
+    - python-yaml
     - vim
     - htop
+    - curl
     - syslog-ng
     - nginx
+    - mutt
 
 - include: security.yml
 

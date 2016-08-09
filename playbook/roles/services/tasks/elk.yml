@@ -1,0 +1,7 @@
+- name: Elk | checkout elk stack compose file
+  git: repo=https://github.com/NOUSguide/docker-elk dest=/srv/docker-elk update=yes accept_hostkey=yes
+
+- name: Elk | Register elk stack docker image
+  docker_service:
+    project_src: /srv/docker-elk
+    state: present
